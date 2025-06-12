@@ -1,6 +1,12 @@
-# 🛡️ cursor-security-rules
+# 🛡️ Cursor Security Rules
 
-This repository contains Cursor Security Rules designed to improve the security of both development workflows and AI agent usage within the Cursor environment. These rules aim to enforce safe coding practices, control sensitive operations, and reduce risk in AI-assisted development.
+This repo provides essential security rules for Cursor.
+
+> ⚠️ **Why do you need these rules?**
+> 
+> By default, Cursor can generate unsafe code—such as exposing secrets or running dangerous commands. These rules act as guardrails to help you avoid risky patterns and enforce best practices automatically.
+
+These rules aim to enforce safe coding practices, control sensitive operations, and reduce risk in AI-assisted development.
 
 ## 🚀 How to Use These Rules
 
