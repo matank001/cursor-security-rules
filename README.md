@@ -27,6 +27,12 @@ These rules aim to enforce safe coding practices, control sensitive operations, 
 - 👮‍♂️ Control sensitive operations
 - 🤝 Foster a security-first development culture
 
----
+## 🤝 Contribute
 
-Feel free to contribute more rules or suggest improvements! 📝
+Are you a security researcher or developer passionate about AI safety? If you have ideas to improve these rules or want to add new ones, we encourage you to contribute! Your expertise can help make AI-assisted development safer for everyone 📝
+
+## 👥 About Us
+
+We are [**Matan Kotick**](https://www.linkedin.com/in/matan-kotick-664735252) and [**Amit Ziv**](https://www.linkedin.com/in/amit-ziv-49690b120), security researchers specializing in the field of AI Agents.
+
+Contact us if you have any questions about this interesting topic!
