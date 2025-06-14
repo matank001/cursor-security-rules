@@ -1,0 +1,43 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# XXE Prevention
+
+These rules apply to all code that parses or processes XML, regardless of language or framework, including AI-generated code.
+
+All violations must include a clear explanation of which rule was triggered and why, to help developers understand and fix the issue effectively.  
+Generated code must not violate these rules. If a rule is violated, a comment must be added explaining the issue and suggesting a correction.
+
+## 1. Disable DTDs and External Entities
+- **Rule:** XML parsers must have Document Type Definitions (DTDs) disabled and must not resolve external entities.
+- **Example (unsafe, Python with lxml):**
+  ```python
+  from lxml import etree
+  etree.fromstring(user_xml)  # External entities allowed ➜ XXE
+  ```
+- **Example (safe, Python using defusedxml):**
+  ```python
+  from defusedxml.ElementTree import fromstring
+  fromstring(user_xml)  # External entities blocked
+  ```
+
+## 2. Use Secure Parser Features / Libraries
+- **Rule:** Choose parsers with XXE protection by default (e.g., `defusedxml` in Python, `XMLInputFactory` with `XMLConstants.FEATURE_SECURE_PROCESSING` in Java). Verify that features to disallow external DTDs and entities are enabled.
+
+## 3. Restrict Schema and XInclude Processing
+- **Rule:** Do not allow remote or file-based schema, XInclude, or XSLT processing on untrusted XML unless explicitly required and properly sandboxed.
+
+## 4. Limit Resource Consumption
+- **Rule:** Configure parser limits (file size, entity expansion depth, timeouts) to prevent Billion Laughs and Quadratic Blow-up DoS attacks.
+
+## 5. Validate and Sanitize Input Before Processing
+- **Rule:** Validate XML against a known schema or allow-list of expected elements. Reject unexpected or malformed content early.
+
+## 6. Avoid Logging Sensitive XML Content
+- **Rule:** Do not log raw XML that may contain credentials, personal data, or other sensitive information.
+
+## 7. Keep Parser Libraries Patched
+- **Rule:** Regularly update XML libraries to incorporate security patches that address newly discovered parser flaws.
+
