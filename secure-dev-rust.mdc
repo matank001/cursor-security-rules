@@ -1,0 +1,42 @@
+---
+description: 
+globs: **/*.rs
+alwaysApply: false
+---
+# Secure Rust Development
+
+These rules apply to all Rust code in the repository and aim to prevent common security risks through disciplined use of memory safety, input validation, error handling, and safe APIs.
+
+All violations must include a clear explanation of which rule was triggered and why, to help developers understand and fix the issue effectively.
+Generated code must not violate these rules. If a rule is violated, a comment must be added explaining the issue and suggesting a correction.
+
+## 1. Avoid Unsafe Code
+- **Rule:** Do not use `unsafe` blocks unless absolutely necessary. If used, document the reason and ensure thorough review.
+
+## 2. Validate All External Input
+- **Rule:** All input from users, files, environment variables, or network must be validated for type, length, and format before use.
+
+## 3. Handle Errors Explicitly
+- **Rule:** Always handle `Result` and `Option` types explicitly. Do not use `unwrap()` or `expect()` on values that may contain errors or `None`.
+
+## 4. Prevent Integer Overflows
+- **Rule:** Use checked arithmetic (`checked_add`, `checked_sub`, etc.) or enable overflow checks in release builds.
+
+## 5. Avoid Panics in Production
+- **Rule:** Do not use code that may panic in production environments. Handle errors gracefully and return appropriate error messages.
+
+## 6. Do Not Expose Sensitive Data
+- **Rule:** Do not log or expose secrets, credentials, or personal data in error messages or logs.
+
+## 7. Use Strong Types for Security-Critical Data
+- **Rule:** Use newtype wrappers or strong types for authentication tokens, passwords, and other sensitive data to avoid accidental misuse.
+
+## 8. Limit Use of Third-Party Crates
+- **Rule:** Only use well-maintained and trusted crates. Regularly audit dependencies for vulnerabilities.
+
+## 9. Avoid Dynamic Code Execution
+- **Rule:** Do not use crates or patterns that allow dynamic code execution (e.g., `proc_macro`, `eval`-like behavior) with untrusted input.
+
+## 10. Prefer Immutability
+- **Rule:** Prefer immutable variables and data structures to reduce the risk of unintended side effects.
+

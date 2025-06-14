@@ -1,0 +1,50 @@
+---
+description: 
+globs: **/*.rb,**/*.erb
+alwaysApply: false
+---
+# Secure Ruby Development
+
+These rules apply to all Ruby code in the repository (including Rails apps, scripts, and gems) and aim to prevent common security vulnerabilities through safe coding patterns, input validation, and proper use of the Ruby standard library.
+
+All violations must include a clear explanation of which rule was triggered and why, to help developers understand and fix the issue effectively.  
+Generated code must not violate these rules. If a rule is violated, a comment must be added explaining the issue and suggesting a correction.
+
+## 1. Avoid `eval`, `exec`, and Back-Ticks With User Input
+- **Rule:** Do not use `eval`, `exec`, `%x{}`, or back-ticks with user-controlled data. Use safe APIs (`Open3.capture2e`, etc.) and parameterization instead.
+
+## 2. Use Parameterized Database Queries
+- **Rule:** Never build SQL by string interpolation. Use ActiveRecord placeholders (`where("username = ?", user_input)`) or prepared statements.
+- **Unsafe:**
+  ```ruby
+  User.where("username = '#{params[:username]}'")
+  ```
+- **Safe:**
+  ```ruby
+  User.where("username = ?", params[:username])
+  ```
+
+## 3. Validate and Sanitize All Input
+- **Rule:** Validate type, length, and format of all external input. In Rails, use Strong Parameters and allow-lists.
+
+## 4. Use Safe YAML Loading
+- **Rule:** Use `YAML.safe_load` (or `Psych.safe_load`) for parsing YAML. Never call `YAML.load` on untrusted input.
+
+## 5. Do Not Deserialize Untrusted Data
+- **Rule:** Avoid `Marshal.load`, `JSON.parse` with `object_class`, or similar deserialization on untrusted sources.
+
+## 6. Avoid Unsafe File Operations
+- **Rule:** Do not call `File.open`, `Dir.glob`, or `send_file` with raw user input. Sanitize paths and enforce allow-lists.
+
+## 7. Protect Secrets and Credentials
+- **Rule:** Do not hard-code secrets in source. Use `Rails.credentials`, ENV vars, or secret managers. Do not log sensitive data.
+
+## 8. Use Constant-Time Comparison for Secrets
+- **Rule:** Use `ActiveSupport::SecurityUtils.secure_compare` (or Rack equivalent) when comparing tokens or signatures.
+
+## 9. Keep Gems Patched and Audited
+- **Rule:** Use dependable tools (`bundler-audit`, `brakeman`, `ruby-sec-scan`) to audit gems for known vulnerabilities. Keep dependencies up to date.
+
+## 10. Avoid `open-uri` on Untrusted URLs
+- **Rule:** Do not use `open("http://...")` with user input. Use `Net::HTTP` and validate the URL against an allow-list.
+
