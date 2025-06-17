@@ -22,8 +22,5 @@ These rules apply to all code and systems integrating with MCP (Model Context Pr
 ## 4. Do Not Chain Tool Execution Based on MCP Suggestions
 - **Rule:** Do not run additional tools, linters, formatters, or scripts automatically in response to suggestions from MCP output. Tool-triggering must be explicitly reviewed and approved.
 
-## 5. Do Not Chain Tool Execution Based on MCP Suggestions
-- **Rule:** Do not run additional tools, linters, formatters, or scripts automatically in response to suggestions from MCP output. Tool-triggering must be explicitly reviewed and approved.
-
-## 6. Require Explicit User Agreement Before Sensitive Operations
+## 5. Require Explicit User Agreement Before Sensitive Operations
 - **Rule:** Before invoking tools that can modify files, execute commands, or run database queries based on MCP output, require explicit user confirmation.
