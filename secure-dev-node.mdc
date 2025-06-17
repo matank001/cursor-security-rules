@@ -20,7 +20,7 @@ Generated code must not violate these rules. If a rule is violated, a comment mu
 - **Rule:** Do not use `execSync`, `spawnSync`, or shell execution functions with untrusted input. Avoid them unless strictly necessary and audited.
 
 ## 4. Use Environment Variables for Secrets
-- **Rule:** Never hardcode secrets such as API keys or credentials. Use environment variables and secure configuration loading.
+- **Rule:** Never hardcode secrets such as API Keys, private keys or credentials. Use environment variables and secure configuration loading.
 
 ## 5. Sanitize and Validate All External Input
 - **Rule:** All inputs (query params, request bodies, headers) must be validated and sanitized before use in logic, queries, or file access.

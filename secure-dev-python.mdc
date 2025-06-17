@@ -25,7 +25,7 @@ don't generate code that violates these rules.
 - **Rule:** Use `hmac.compare_digest()` for comparing secrets like tokens, passwords, or signatures to prevent timing attacks.
 
 ## 5. Do Not Log Sensitive Data
-- **Rule:** Logs must not contain passwords, tokens, API keys, or personally identifiable information (PII).
+- **Rule:** Logs must not contain passwords, tokens, API keys, private keys, or personally identifiable information (PII).
 
 ## 6. Avoid Subprocess Calls with User Input
 - **Rule:** Avoid using `os.system`, `subprocess.run`, or similar functions. Use parameterized APIs or sandboxed environments if needed.
