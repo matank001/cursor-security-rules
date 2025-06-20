@@ -146,10 +146,6 @@ What is the potential risk
    * In some cases, recommend using libraries that manage encoding/safety.
 
 
-Here's a detailed section you can add to your system prompt to help the AI **identify dangerous functions**, even when they're hidden behind abstraction or naming tricks:
-
----
-
 ## Recognizing Dangerous Functions
 
 Dangerous functions are operations that can cause unintended side effects, system compromise, or data exposure **when given untrusted input**. These functions are not always obviously labeled as "dangerous" — so the AI must reason **based on context** and the **type of behavior** involved.
