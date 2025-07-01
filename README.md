@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/matank001-cursor-security-rules-badge.png)](https://mseep.ai/app/matank001-cursor-security-rules)
+
 # 🛡️ Cursor Security Rules
 
 This repo provides essential security rules for Cursor.
